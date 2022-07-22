@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>快速排序算法 | SherryScout's Blog</title><meta name="keywords" content="算法,LeetCode题"><meta name="author" content="SherryScout"><meta name="copyright" content="SherryScout"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="快速排序算法简介： 快速排序（Quicksort），一种计算机排序算法，该算法最早由东尼·霍尔在1960年提出。                                                                                                                            ——百度百科  ​	 “快速排序” 顾名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速排序算法">
+<meta property="og:url" content="http://example.com/post/5c8ae43f.html">
+<meta property="og:site_name" content="SherryScout&#39;s Blog">
+<meta property="og:description" content="快速排序算法简介： 快速排序（Quicksort），一种计算机排序算法，该算法最早由东尼·霍尔在1960年提出。                                                                                                                            ——百度百科  ​	 “快速排序” 顾名">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/TextImg4.jpg">
+<meta property="article:published_time" content="2022-07-18T12:13:59.000Z">
+<meta property="article:modified_time" content="2022-07-21T15:11:30.356Z">
+<meta property="article:author" content="SherryScout">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="LeetCode题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/TextImg4.jpg"><link rel="shortcut icon" href="/img/BlogImg.jpg"><link rel="canonical" href="http://example.com/post/5c8ae43f"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '快速排序算法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-21 23:11:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/hayiibadasa.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 0</span></a></li><li><a class="site-page child" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> 1</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly/"><i class="fa-fw fa fa-heart"></i><span> 2</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/TextImg4.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">SherryScout's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 0</span></a></li><li><a class="site-page child" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> 1</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly/"><i class="fa-fw fa fa-heart"></i><span> 2</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">快速排序算法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-18T12:13:59.000Z" title="发表于 2022-07-18 20:13:59">2022-07-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-21T15:11:30.356Z" title="更新于 2022-07-21 23:11:30">2022-07-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%97%A5%E5%B8%B8/%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/">算法研究</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="快速排序算法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="快速排序算法"><a href="#快速排序算法" class="headerlink" title="快速排序算法"></a>快速排序算法</h1><h2 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h2><blockquote>
+<p>快速排序（Quicksort），一种计算机排序算法，该算法最早由东尼·霍尔在1960年提出。<br>                                                                                                                            ——百度百科</p>
+</blockquote>
+<p>​	 “<strong>快速排序</strong>” 顾名思义，该算法的速度很快，是对冒泡排序算法的一种改进。 它的出现将排序算法的时间复杂度从原有的O(n²)优化到了O(<em><strong>logN</strong></em> * n) ，同样属于O（<em><strong>logN</strong></em> * n)时间复杂度的排序算法还有：归并排序、堆排序。    </p>
+<p>​	但是在实现的比较好的时候，快速排序往往比归并排序、堆排序等优秀的排序算法还要更快！</p>
+<hr>
+<h2 id="快速排序算法分析："><a href="#快速排序算法分析：" class="headerlink" title="快速排序算法分析："></a>快速排序算法分析：</h2><p>​	快速排序算法一般基于递归实现，它的核心思想就是 “<strong>划分</strong>” 操作。<br>​	<strong>核心思想：</strong>  </p>
+<ul>
+<li><p>拿到数组，先随机取数组中的一个数作为一个参照标准（称为：中轴数）。</p>
+</li>
+<li><p>利用中轴数对数组进行一次划分，比中轴小的数放在中轴的左边，比中轴大的数放在其右边，不考虑具体的顺序问题。</p>
+</li>
+<li><p>这样做完后，数组虽然未能得到排序，但是中轴这个数的位置被确定下来，它的位置不会再发生变动，相当于我们将中轴这个数字排好了序。</p>
+</li>
+<li><p>此时中轴将数组划分为两个子数组，两数组采用递归调用的方式，重复如上三步骤，直至整个数组排序完毕。</p>
+</li>
+</ul>
+<h2 id="实现设计："><a href="#实现设计：" class="headerlink" title="实现设计："></a>实现设计：</h2><ol>
+<li>随机取中轴可以直接用数组的第一个数。</li>
+<li>一次对中轴的排序需要一次 “<strong>划分</strong>” 操作，紧接着还需要下一次的递归调用函数操作。</li>
+<li>划分操作的Partition函数中，该函数必须要返回中轴最后确定下来的位置下标，因为只有这样才能拿到子数组，用于后面的递归调用。</li>
+<li>核心函数Partition在使用中轴划分数组时，必定会用到循环语句，遍历数组的每一个数来与中轴作比较。</li>
+<li>可以利用双指针解决数组问题。</li>
+</ol>
+<hr>
+<h2 id="伪代码："><a href="#伪代码：" class="headerlink" title="伪代码："></a>伪代码：</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">QuickSort</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> l, <span class="type">int</span> r)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r)  <span class="keyword">return</span>;                     <span class="comment">//递归结束条件</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> Partition(nums, l,  r);    <span class="comment">//划分操作</span></span><br><span class="line">    QuickSort(nums, l, m - <span class="number">1</span>);        <span class="comment">//递归调用</span></span><br><span class="line">    QuickSort(nums, m + <span class="number">1</span>,  r); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">Partition</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> l, <span class="type">int</span> r)</span>&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> l;                           <span class="comment">//取第一个数为中轴</span></span><br><span class="line">    Swap（nums, i, r）;       <span class="comment">//把中轴先放到尾部</span></span><br><span class="line">    <span class="keyword">for</span>( j = l → r -<span class="number">1</span>）&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[j]  &lt;=  nums[r])&#123;       <span class="comment">//若小于中轴</span></span><br><span class="line">            Swap（nums, i, j);</span><br><span class="line">             i++;            <span class="comment">//每交换完后，i指针前进一次 </span></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     Swap(nums, i, r);   <span class="comment">//循环结束，表示i指针已经到达中轴该处于的位置，此时将尾部的中轴数交换回来。</span></span><br><span class="line">     <span class="keyword">return</span> i;        	<span class="comment">//返回下标</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">Swap</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> i, <span class="type">int</span> j)</span>&#123;   <span class="comment">//交换函数</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> nums[i];</span><br><span class="line">	nums[i] = nums[j];</span><br><span class="line">	nums[j] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="伪代码分析："><a href="#伪代码分析：" class="headerlink" title="伪代码分析："></a>伪代码分析：</h2><p>​	递归调用不难理解，关键在于Partition函数的代码实现。下面是Partition函数的 “<strong>划分</strong>” 详解：</p>
+<p>​		Partition函数一进来先取数组的第一个数为中轴数，这里其实随机取一个都可以。（这也是快速排序算法讲运气的地方，所以说在实现的比较好的时候，即我们每次取的中轴数恰好就是数组排序后的正中心的时候，快速排序往往比同阶级时间复杂度的排序算法还要快的原因。）然后将中轴放到了末尾，这样做的好处是方便代码的实现，方便循环语句去遍历数组。</p>
+<p>​		让我们来看看循环语句怎么写，我们采用双指针的实现方式：</p>
+<p><img src="/QuickSort.png" alt="双指针分析图"></p>
+<p>​		如上图，我们利用 i 和 j 双指针将整个数组分割为三个区域（i 前面：绿色A 、i 到 j ：黄色B 、j 后面：灰色C ）。</p>
+<p>​		j 是循环语句中的变量，它是遍历指针，从数组头一直走到尾。</p>
+<p>​		假设现在两指针如上图所示，当 j 所指元素小于（或等于）中轴时，它会和 i 指针所指元素交换位置，然后 i 向后走一步。想象一下，整个过程就相当于将 j 指针这个元素 “<strong>扔进</strong>” 了绿色区域。</p>
+<p>​		如果 j 指针发现该元素比中轴大，那就什么也不做，进入下一次循环，下一次循环进来时，j 会自增。j 往后走了，就相当于把这个元素 “<strong>放入</strong>” 了黄色区域！</p>
+<p>​		而 j 后面的灰色区域则是我们还没有探索的区域，代表着循环还没有结束，j 还要继续遍历数组。</p>
+<p>​		可以想象，j 指针从头到尾走完一遍后，绿色区域里面的元素一定比中轴小（或等于）! 而黄色区域里面的元素一定比中轴大！我们不关心每个元素之间的大小排序。</p>
+<p>​		如此一来，当 j 到达了数组末尾，循环结束。灰色区域只剩下中轴一个元素。此时所有比中轴小（或等于）的元素在绿色区域中，黄色区域里的元素则大于中轴，这样我们就划分好了数组。</p>
+<p>​		最后只需要将中轴移动到绿色、黄色两区域之间就可以了，而此时 i 指针恰好是两个区域的交界处，且 i 指针属于黄色区域，其值大于中轴，所以代码的最后一步要交换 i、 j指针所指元素，中轴回到正确的位置后，返回中轴此时的下标：i 指针。</p>
+<hr>
+<h2 id="写在最后："><a href="#写在最后：" class="headerlink" title="写在最后："></a>写在最后：</h2><p>​	快速排序算法的“<strong>划分</strong>”操作是该算法的精髓。其代码的实现方式是：双指针 + 交换。</p>
+<p>​	其实划分思想中的<strong>双指针</strong>很有用，双指针是解决数组问题的一大武器。</p>
+<p>​	学习链接：	<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1rV411j7f6?spm_id_from=333.337.search-card.all.click">快速排序算法视频链接-动画易懂，讲解全面</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">SherryScout</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/post/5c8ae43f.html">http://example.com/post/5c8ae43f.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">SherryScout's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a><a class="post-meta__tags" href="/tags/LeetCode%E9%A2%98/">LeetCode题</a></div><div class="post_share"><div class="social-share" data-image="/img/TextImg4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/post/2da0528d.html"><img class="prev-cover" src="/img/TextImg4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">KMP算法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/post/2da0528d.html" title="KMP算法"><img class="cover" src="/img/TextImg4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-21</div><div class="title">KMP算法</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/hayiibadasa.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">SherryScout</div><div class="author-info__description">I Am Because You Are</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to SherryScout's Blog!</div></div><div class="xpand" style="height:200px;"><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas></div><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
+margin: 0;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+canvas {
+display: block;
+margin: 0 auto;
+cursor: move;
+}</style><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">快速排序算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">简介：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">快速排序算法分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%AE%BE%E8%AE%A1%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">实现设计：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">伪代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">伪代码分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E%EF%BC%9A"><span class="toc-number">1.6.</span> <span class="toc-text">写在最后：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/4a17b156.html" title="欢迎来到yt的博客，这是我的第一篇文章。"><img src="/img/TagImg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="欢迎来到yt的博客，这是我的第一篇文章。"/></a><div class="content"><a class="title" href="/post/4a17b156.html" title="欢迎来到yt的博客，这是我的第一篇文章。">欢迎来到yt的博客，这是我的第一篇文章。</a><time datetime="2022-07-22T15:44:20.664Z" title="发表于 2022-07-22 23:44:20">2022-07-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/2da0528d.html" title="KMP算法"><img src="/img/TextImg4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="KMP算法"/></a><div class="content"><a class="title" href="/post/2da0528d.html" title="KMP算法">KMP算法</a><time datetime="2022-07-21T13:37:03.000Z" title="发表于 2022-07-21 21:37:03">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/5c8ae43f.html" title="快速排序算法"><img src="/img/TextImg4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="快速排序算法"/></a><div class="content"><a class="title" href="/post/5c8ae43f.html" title="快速排序算法">快速排序算法</a><time datetime="2022-07-18T12:13:59.000Z" title="发表于 2022-07-18 20:13:59">2022-07-18</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/TextImg4.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By SherryScout</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
